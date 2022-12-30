@@ -33,20 +33,21 @@ function Thread({ thread }) {
                 <p className="comment-count">
                   <FontAwesomeIcon icon={faComment} />
                   {thread.totalComments}
+                  {thread.totalComments > 1 ? ' comments' : ' comment'}
                 </p>
 
               </div>
             </div>
           </div>
           <div className="comment-voting">
-            <button type="button">
+            <button className="comment-button" type="button">
               <FontAwesomeIcon icon={faThumbsUp} />
               <span className="sr-only">Vote up</span>
             </button>
             <p className="comment-vote-count">
               {thread.upVotesBy.length - thread.downVotesBy.length}
             </p>
-            <button type="button">
+            <button className="comment-button" type="button">
               <FontAwesomeIcon icon={faThumbsDown} />
               <span className="sr-only">Vote down</span>
             </button>

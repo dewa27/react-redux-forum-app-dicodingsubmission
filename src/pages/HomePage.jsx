@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { asyncGetThreads } from '../states/threads/action';
+import { asyncAddThread, asyncGetThreads } from '../states/threads/action';
 import Thread from '../components/Thread';
 import ThreadFormInput from '../components/ThreadFormInput';
 
@@ -14,9 +14,13 @@ function HomePage() {
   useEffect(() => {
     dispatch(asyncGetThreads());
   }, [dispatch]);
+
+  const onAddThread = ({ title, body, category }) => {
+    dispatch(asyncAddThread({ title, body, category }));
+  };
   return (
     <>
-      <ThreadFormInput />
+      <ThreadFormInput addThread={onAddThread} />
       <div>
         {threads.map((thread) => <Thread thread={thread} />)}
       </div>

@@ -1,32 +1,41 @@
 import React from 'react';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-function LeaderboardPodium() {
+function LeaderboardPodium({ leaderboard, rankNumber }) {
   return (
     <div className="card podium">
+      <span className="podium-label-wrapper">
+        <span className="podium-label">
+          <FontAwesomeIcon icon={faHashtag} />
+          <p>{rankNumber}</p>
+        </span>
+      </span>
       <div className="podium-body">
-        <img src="logo192.png" alt="" />
-        <p className="podium-username">Dewa Krishna</p>
-        <p className="email">dewakrishna@gmail.com</p>
-        <span>
-          <FontAwesomeIcon icon={faStar} />
-          4
+        <img className="user-image" src={leaderboard.user.avatar} alt="" />
+        <p className="podium-username">{leaderboard.user.name}</p>
+        <p className="email">{leaderboard.user.email}</p>
+        <span className="podium-score">
+          <span>
+            {leaderboard.score}
+          </span>
+          pts
         </span>
       </div>
     </div>
   );
 }
-// LeaderboardPodium.propTypes = {
-//   rank: PropTypes.shape({
-//     score: PropTypes.number.isRequired,
-//     user: PropTypes.shape({
-//       avatar: PropTypes.string.isRequired,
-//       email: PropTypes.string.isRequired,
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//     }).isRequired,
-//   }).isRequired,
-// };
+LeaderboardPodium.propTypes = {
+  leaderboard: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    user: PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  rankNumber: PropTypes.number.isRequired,
+};
 export default LeaderboardPodium;
