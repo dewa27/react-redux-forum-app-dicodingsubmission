@@ -1,6 +1,6 @@
 const timeSince = (date) => {
   const secondsOfDate = new Date(date).getTime();
-  const seconds = Math.floor((new Date() - secondsOfDate) / 1000);
+  const seconds = Math.floor((new Date().getTime() + 1000 - secondsOfDate) / 1000);
 
   let interval = seconds / 31536000;
 

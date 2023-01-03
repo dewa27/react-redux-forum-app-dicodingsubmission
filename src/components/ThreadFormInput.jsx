@@ -1,37 +1,37 @@
+/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
-import useInputHtml from '../hooks/useInputHtml';
 import useInputValue from '../hooks/useInputValue';
 import threadCategories from '../utils/threadCategoriesData';
+import TextareaInput from './TextareaInput';
 
 function ThreadFormInput({ addThread }) {
   const [title, onTitleChangeHandler] = useInputValue();
   const [selectCategory, onSelectCategoryHandler] = useInputValue(0);
-  const [body, onBodyChangeHandler] = useInputHtml();
+  const [body, onBodyChangeHandler] = useInputValue();
 
   const onSend = () => {
     addThread({ title, body, category: selectCategory });
-    // eslint-disable-next-line no-console
-    console.log('sent!');
   };
   return (
     <div className="thread-input">
       <div className="thread-input-header">
-        <input className="thread-title" type="text" placeholder="Insert title..." value={title} onChange={onTitleChangeHandler} />
-        <select className="thread-category" name="" id="" value={selectCategory} onChange={onSelectCategoryHandler}>
+        <input className="thread-input__thread-title" type="text" placeholder="Insert title..." value={title} onChange={onTitleChangeHandler} />
+        <select className="thread-input__thread-category" name="" id="" value={selectCategory} onChange={onSelectCategoryHandler}>
           <option value="0" disabled>Select category...</option>
           {threadCategories.map(
-            (category) => <option value={category.name}>{category.name}</option>,
+            (category) => (
+              <option
+                key={category.name}
+                value={category.name}
+              >
+                {category.name}
+              </option>
+            ),
           )}
         </select>
       </div>
-      <textarea type="text" placeholder="What are you thinking?" onChange={onBodyChangeHandler}>
-        {body}
-      </textarea>
-      <p className="thread-input__char-right">
-        <strong>0</strong>
-        /320
-      </p>
+      <TextareaInput body={body} onBodyChangeHandler={onBodyChangeHandler} placeholder="Insert thread body..." />
       <button type="submit" onClick={onSend}>Send</button>
     </div>
   );

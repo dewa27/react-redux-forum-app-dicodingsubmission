@@ -1,4 +1,5 @@
 import api from '../../utils/api';
+import { showToast } from '../toast/action';
 
 const ActionType = {
   RECEIVE_USERS: 'RECEIVE_USERS',
@@ -12,13 +13,13 @@ function receiveUsersActionCreator(users) {
     },
   };
 }
-function asyncRegisterUser({ id, name, password }) {
-  return async () => {
+function asyncRegisterUser({ email, name, password }) {
+  return async (dispatch) => {
     try {
-      await api.register({ id, name, password });
+      await api.register({ email, name, password });
+      dispatch(showToast({ title: 'Register Success', body: 'Your account has successfuly created !', type: 'success' }));
     } catch (error) {
-      // eslint-disable-next-line no-alert
-      alert(error.message);
+      dispatch(showToast({ title: 'Register Failed', body: error.message, type: 'error' }));
     }
   };
 }

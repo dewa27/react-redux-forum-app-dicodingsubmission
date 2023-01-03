@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
   function putAccessToken(token) {
@@ -129,10 +130,10 @@ const api = (() => {
     }
 
     const {
-      data: { talk },
+      data: { thread },
     } = responseJson;
 
-    return talk;
+    return thread;
   }
   async function getAllThreads() {
     const response = await fetch(`${BASE_URL}/threads`);
@@ -164,10 +165,9 @@ const api = (() => {
     }
 
     const {
-      data: { threadDetail },
+      data: { detailThread },
     } = responseJson;
-
-    return threadDetail;
+    return detailThread;
   }
   async function createComment({ threadId, content }) {
     const response = await fetchWithAuth(
@@ -197,15 +197,12 @@ const api = (() => {
 
     return comment;
   }
-  async function toggleLikeTalk(id) {
-    const response = await fetchWithAuth(`${BASE_URL}/talks/likes`, {
+  async function likeThread(threadId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/up-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        talkId: id,
-      }),
     });
 
     const responseJson = await response.json();
@@ -215,8 +212,111 @@ const api = (() => {
     if (status !== 'success') {
       throw new Error(message);
     }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
   }
+  async function dislikeThread(threadId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/down-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
+  }
+  async function neutralizeThread(threadId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/neutral-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
+  }
+  async function likeComment(threadId, commentId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
+  }
+  async function dislikeComment(threadId, commentId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
+  }
+  async function neutralizeComment(threadId, commentId) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    const {
+      data: { vote },
+    } = responseJson;
+    return vote;
+  }
   async function getLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`);
 
@@ -243,11 +343,16 @@ const api = (() => {
     getOwnProfile,
     getAllUsers,
     getAllThreads,
-    toggleLikeTalk,
+    likeThread,
     getThreadDetail,
     createThread,
     createComment,
     getLeaderboards,
+    dislikeThread,
+    neutralizeThread,
+    likeComment,
+    dislikeComment,
+    neutralizeComment,
   };
 })();
 

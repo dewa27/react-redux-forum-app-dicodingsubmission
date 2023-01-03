@@ -1,4 +1,5 @@
 import api from '../../utils/api';
+import { showToast } from '../toast/action';
 
 const ActionType = {
   RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
@@ -19,8 +20,7 @@ function asyncGetLeaderboards() {
       const leaderboards = await api.getLeaderboards();
       dispatch(receiveLeaderboardsActionCreator(leaderboards));
     } catch (error) {
-      // eslint-disable-next-line no-alert
-      alert(error.message);
+      dispatch(showToast({ title: 'Load Leaderboards Failed', body: error.message, type: 'error' }));
     }
   };
 }

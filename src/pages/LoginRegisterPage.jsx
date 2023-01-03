@@ -1,28 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import useInputValue from '../hooks/useInputValue';
+import { asyncSetAuthUser } from '../states/authUser/action';
+import { asyncRegisterUser } from '../states/user/action';
 
 function LoginRegisterPage() {
+  const dispatch = useDispatch();
   const [name, onChangeNameHandler, setName] = useInputValue();
   const [email, onChangeEmailHandler, setEmail] = useInputValue();
   const [password, onChangePasswordHandler, setPassword] = useInputValue();
+
   const container = document.getElementById('container');
   const resetInput = () => {
     setName(() => '');
     setEmail(() => '');
     setPassword(() => '');
   };
-  const onSignUpClickHandler = async () => {
+  const onSignUpClickHandler = () => {
     container.classList.add('right-panel-active');
     resetInput();
   };
 
-  const onSignInClickHandler = async () => {
+  const onSignInClickHandler = () => {
     container.classList.remove('right-panel-active');
     resetInput();
   };
 
   const onLoginHandler = () => {
+    dispatch(asyncSetAuthUser({ email, password }));
+    resetInput();
+  };
+
+  const onRegisterHandler = () => {
+    dispatch(asyncRegisterUser({ email, name, password }));
     resetInput();
   };
   return (
@@ -36,7 +48,7 @@ function LoginRegisterPage() {
               <input className="auth-input" type="email" placeholder="Email" value={email} onChange={onChangeEmailHandler} />
               <input className="auth-input" type="password" placeholder="Password" value={password} onChange={onChangePasswordHandler} />
             </div>
-            <button className="btn-auth" type="button">Sign Up</button>
+            <button className="btn-auth" type="button" onClick={onRegisterHandler}>Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
