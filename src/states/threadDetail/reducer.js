@@ -11,12 +11,18 @@ function threadDetailReducer(threadDetail = {}, action = {}) {
         ...threadDetail,
         voteType: action.payload.vote.voteType,
         upVotesBy: [...threadDetail.upVotesBy, action.payload.vote.userId],
+        downVotesBy: [...threadDetail.downVotesBy].filter(
+          (userId) => userId !== action.payload.vote.userId,
+        ),
       };
     case ActionType.DISLIKE_THREAD_DETAIL:
       return {
         ...threadDetail,
         voteType: action.payload.vote.voteType,
         downVotesBy: [...threadDetail.downVotesBy, action.payload.vote.userId],
+        upVotesBy: [...threadDetail.upVotesBy].filter(
+          (userId) => userId !== action.payload.vote.userId,
+        ),
       };
     case ActionType.NEUTRALIZE_THREAD_DETAIL:
       return {

@@ -66,12 +66,12 @@ function LoginRegisterPage() {
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
-              <p>To keep connected with us please login with your personal info</p>
+              <p>Please login with your account</p>
               <button className="btn-auth ghost" type="button" id="signIn" onClick={onSignInClickHandler}>Sign In</button>
             </div>
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
+              <p>Enter your personal details and start making discussions with others</p>
               <button className="btn-auth ghost" type="button" id="signUp" onClick={onSignUpClickHandler}>Sign Up</button>
             </div>
           </div>

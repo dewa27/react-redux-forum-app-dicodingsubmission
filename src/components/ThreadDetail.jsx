@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import ActionButton from './ActionButton';
 
 function ThreadDetail({
@@ -32,17 +30,14 @@ function ThreadDetail({
       </div>
       <div className="detail-thread__body">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          blanditiis aperiam voluptates dolore repudiandae accusamus perspiciatis
-          assumenda ex qui! Quos officia dolor
-          exercitationem tempore eaque animi omnis, asperiores enim dolores.
+          {threadDetail.body}
         </p>
       </div>
       <div className="button-group detail-thread__button-group">
         <span className="thread-icon-detail">
           <ActionButton
             onClick={onLikeHandler}
-            icon={faThumbsUp}
+            icon="thumbs-up"
             additionalClass={threadDetail.voteType === 1 ? 'active' : ''}
           />
           {threadDetail.upVotesBy ? threadDetail.upVotesBy.length : ''}
@@ -50,7 +45,7 @@ function ThreadDetail({
         <span className="thread-icon-detail">
           <ActionButton
             onClick={onDislikeHandler}
-            icon={faThumbsDown}
+            icon="thumbs-up"
             additionalClass={threadDetail.voteType === -1 ? 'active' : ''}
           />
           {threadDetail.downVotesBy ? threadDetail.downVotesBy.length : ''}

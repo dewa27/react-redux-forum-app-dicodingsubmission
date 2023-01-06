@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,14 +6,6 @@ import { faCircleCheck, faCircleExclamation } from '@fortawesome/free-solid-svg-
 function Toast({
   title, body, isShown, type,
 }) {
-  // const [isToastShown, setIsToastShown] = useState(isShown);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsToastShown(() => false);
-  //   }, 2000);
-  //   console.log('tes');
-  // }, []);
-
   return (
     <div className={`toast ${isShown ? 'show' : ''} ${type}`}>
       <div className="toast-icon">

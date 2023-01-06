@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -53,15 +52,15 @@ function Thread({
           </p>
           <div className="button-group">
             <span className="thread-icon-detail">
-              <ActionButton onClick={onLikeHandler} icon={faThumbsUp} additionalClass={thread.voteType === 1 ? 'active' : ''} />
+              <ActionButton onClick={onLikeHandler} icon="thumbs-up" additionalClass={thread.voteType === 1 ? 'active' : ''} />
               {thread.upVotesBy.length}
             </span>
             <span className="thread-icon-detail">
-              <ActionButton onClick={onDislikeHandler} icon={faThumbsDown} additionalClass={thread.voteType === -1 ? 'active' : ''} />
+              <ActionButton onClick={onDislikeHandler} icon="thumbs-down" additionalClass={thread.voteType === -1 ? 'active' : ''} />
               {thread.downVotesBy.length}
             </span>
             <span className="thread-icon-detail comment-count">
-              <FontAwesomeIcon icon={faComment} />
+              <FontAwesomeIcon icon="comment" />
               {thread.totalComments}
               {thread.totalComments > 1 ? ' comments' : ' comment'}
             </span>

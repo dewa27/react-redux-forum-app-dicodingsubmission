@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import timeSince from '../utils/helper';
 import ActionButton from './ActionButton';
 
@@ -45,11 +44,11 @@ function Comment({
         </p>
         <div className="button-group">
           <span className="thread-icon-detail">
-            <ActionButton onClick={onLikeHandler} icon={faThumbsUp} additionalClass={comment.upVotesBy.includes(authUser.id) ? 'active' : ''} />
+            <ActionButton onClick={onLikeHandler} icon="thumbs-up" additionalClass={comment.upVotesBy.includes(authUser.id) ? 'active' : ''} />
             {comment.upVotesBy.length}
           </span>
           <span className="comment-icon-detail">
-            <ActionButton onClick={onDislikeHandler} icon={faThumbsDown} additionalClass={comment.downVotesBy.includes(authUser.id) ? 'active' : ''} />
+            <ActionButton onClick={onDislikeHandler} icon="thumbs-down" additionalClass={comment.downVotesBy.includes(authUser.id) ? 'active' : ''} />
             {comment.downVotesBy.length}
           </span>
         </div>

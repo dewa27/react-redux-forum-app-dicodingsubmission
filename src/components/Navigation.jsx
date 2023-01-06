@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage, faUser, faRankingStar } from '@fortawesome/free-solid-svg-icons';
 
 function Navigation() {
   const [navigationPosition, setNavigationPosition] = useState(window.location.pathname);
@@ -13,15 +12,15 @@ function Navigation() {
   return (
     <nav>
       <Link to="/" className={navigationPosition === '/' ? 'active' : ''}>
-        <FontAwesomeIcon icon={faMessage} />
+        <FontAwesomeIcon icon="message" />
         <span>Threads</span>
       </Link>
       <Link to="/leaderboards" className={navigationPosition === '/leaderboards' ? 'active' : ''}>
-        <FontAwesomeIcon icon={faRankingStar} />
+        <FontAwesomeIcon icon="ranking-star" />
         <span>Leaderboards</span>
       </Link>
       <Link to="/profile" className={navigationPosition === '/profile' ? 'active' : ''}>
-        <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon icon="user" />
         <span>Account</span>
       </Link>
     </nav>

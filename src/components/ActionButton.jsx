@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import PropTypes from 'prop-types';
 
 function ActionButton({ onClick, icon, additionalClass = '' }) {
@@ -12,8 +13,7 @@ function ActionButton({ onClick, icon, additionalClass = '' }) {
 }
 ActionButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  icon: PropTypes.object.isRequired,
+  icon: PropTypes.string.isRequired,
   additionalClass: PropTypes.string.isRequired,
 };
 export default ActionButton;
