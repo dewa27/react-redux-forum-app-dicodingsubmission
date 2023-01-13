@@ -45,7 +45,7 @@ function ThreadDetail({
         <span className="thread-icon-detail">
           <ActionButton
             onClick={onDislikeHandler}
-            icon="thumbs-up"
+            icon="thumbs-down"
             additionalClass={threadDetail.voteType === -1 ? 'active' : ''}
           />
           {threadDetail.downVotesBy ? threadDetail.downVotesBy.length : ''}
