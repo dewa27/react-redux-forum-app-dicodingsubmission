@@ -19,10 +19,14 @@ function Toast({
   );
 }
 Toast.propTypes = {
+  /** Title of the toast */
   title: PropTypes.string,
+  /** Description or body of the toast */
   body: PropTypes.string,
+  /** State of the toast, is it shown or not */
   isShown: PropTypes.bool,
-  type: PropTypes.string,
+  /** Toast type, success or error */
+  type: PropTypes.oneOf(['success', 'error']),
 };
 Toast.defaultProps = {
   title: '',

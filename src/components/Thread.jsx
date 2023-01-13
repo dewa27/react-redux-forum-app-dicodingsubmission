@@ -3,6 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
 import timeSince from '../utils/helper';
 import ActionButton from './ActionButton';
 
@@ -95,4 +96,5 @@ Thread.propTypes = {
   onDislike: PropTypes.func.isRequired,
   onNeutralize: PropTypes.func.isRequired,
 };
+
 export default Thread;

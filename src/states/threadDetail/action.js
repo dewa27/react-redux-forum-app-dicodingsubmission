@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
@@ -90,7 +91,7 @@ function neutralizeCommentActionCreator(vote) {
 function asyncGetThreadDetail(id) {
   return async (dispatch, getState) => {
     const { authUser } = getState();
-    dispatch(showLoading);
+    dispatch(showLoading());
     try {
       const threadDetail = await api.getThreadDetail(id);
       dispatch(receiveThreadDetailActionCreator(threadDetail, authUser.id));
@@ -98,7 +99,7 @@ function asyncGetThreadDetail(id) {
       // eslint-disable-next-line no-alert
       alert(error.message);
     }
-    dispatch(hideLoading);
+    dispatch(hideLoading());
   };
 }
 
@@ -205,6 +206,9 @@ export {
   ActionType,
   asyncGetThreadDetail,
   receiveThreadDetailActionCreator,
+  likeThreadDetailActionCreator,
+  dislikeThreadDetailActionCreator,
+  neutralizeThreadDetailActionCreator,
   asyncCreateComment,
   asyncDislikeThreadDetail,
   asyncLikeThreadDetail,

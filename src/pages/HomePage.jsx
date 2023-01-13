@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   asyncAddThread,
 } from '../states/threads/action';
-import asyncGetThreadsandUsers from '../states/shared/action';
+import asyncGetThreadsAndUsers from '../states/shared/action';
 import ThreadFormInput from '../components/ThreadFormInput';
 import ThreadList from '../components/ThreadList';
 
@@ -16,7 +16,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(asyncGetThreadsandUsers());
+    dispatch(asyncGetThreadsAndUsers());
   }, [dispatch]);
 
   const onAddThread = ({ title, body, category }) => {

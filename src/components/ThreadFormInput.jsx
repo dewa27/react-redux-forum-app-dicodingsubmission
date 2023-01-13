@@ -17,7 +17,7 @@ function ThreadFormInput({ addThread }) {
     <div className="thread-input">
       <div className="thread-input-header">
         <input className="thread-input__thread-title" type="text" placeholder="Insert title..." value={title} onChange={onTitleChangeHandler} />
-        <select className="thread-input__thread-category" name="" id="" value={selectCategory} onChange={onSelectCategoryHandler}>
+        <select className="thread-input__thread-category" name="" id="" value={selectCategory} onChange={onSelectCategoryHandler} data-testid="select">
           <option value="0" disabled>Select category...</option>
           {threadCategories.map(
             (category) => (

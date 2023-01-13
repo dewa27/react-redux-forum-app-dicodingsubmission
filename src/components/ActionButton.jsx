@@ -12,8 +12,14 @@ function ActionButton({ onClick, icon, additionalClass = '' }) {
   );
 }
 ActionButton.propTypes = {
+  /** Function callback when onClick the ActionButton */
   onClick: PropTypes.func.isRequired,
-  icon: PropTypes.string.isRequired,
-  additionalClass: PropTypes.string.isRequired,
+  /** Icon of the ActionButton */
+  icon: PropTypes.oneOf(['thumbs-up', 'thumbs-down']).isRequired,
+  /** Additional class for styling the ActionButton */
+  additionalClass: PropTypes.oneOfType([
+    PropTypes.oneOf(['active']),
+    PropTypes.string,
+  ]).isRequired,
 };
 export default ActionButton;

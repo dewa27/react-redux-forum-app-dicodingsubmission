@@ -3,7 +3,7 @@ import api from '../../utils/api';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../user/action';
 
-function asyncGetThreadsandUsers() {
+function asyncGetThreadsAndUsers() {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
@@ -18,4 +18,4 @@ function asyncGetThreadsandUsers() {
     dispatch(hideLoading());
   };
 }
-export default asyncGetThreadsandUsers;
+export default asyncGetThreadsAndUsers;
