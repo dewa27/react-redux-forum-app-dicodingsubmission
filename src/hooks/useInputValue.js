@@ -7,7 +7,7 @@ function useInputValue(defaultValue = '') {
     setValue(event.target.value);
   };
 
-  return [value, setValue];
+  return [value, onValueChangeHandler, setValue];
 }
 
 export default useInputValue;
