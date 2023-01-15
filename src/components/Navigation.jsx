@@ -9,9 +9,10 @@ function Navigation() {
   useEffect(() => {
     setNavigationPosition(() => location.pathname);
   }, [location]);
+  console.log(navigationPosition);
   return (
     <nav>
-      <Link to="/" className={navigationPosition === '/' ? 'active' : ''}>
+      <Link to="/" className={navigationPosition === '/' || navigationPosition.includes('/thread') ? 'active' : ''}>
         <FontAwesomeIcon icon="message" />
         <span>Threads</span>
       </Link>
@@ -28,6 +29,3 @@ function Navigation() {
 }
 
 export default Navigation;
-// Navigation.propTypes = {
-//   navigation: PropTypes.string.isRequired,
-// };
