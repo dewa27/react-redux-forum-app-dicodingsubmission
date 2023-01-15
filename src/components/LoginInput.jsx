@@ -21,8 +21,8 @@ function LoginInput({ onLogin, currentPage }) {
   return (
     <>
       <div>
-        <input className="auth-input" type="email" placeholder="Email" value={email} onChange={onChangeEmailHandler} />
-        <input className="auth-input" type="password" placeholder="Password" value={password} onChange={onChangePasswordHandler} />
+        <input id="signInEmail" className="auth-input" type="email" placeholder="Email" value={email} onChange={onChangeEmailHandler} />
+        <input id="signInPassword" className="auth-input" type="password" placeholder="Password" value={password} onChange={onChangePasswordHandler} />
       </div>
       <button className="btn-auth" type="button" onClick={onLoginHandler}>Sign In</button>
     </>

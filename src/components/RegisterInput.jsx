@@ -16,7 +16,6 @@ function RegisterInput({ onRegister, currentPage }) {
 
   useEffect(() => {
     resetInput();
-    console.log('as');
   }, [currentPage]);
 
   const onRegisterHandler = () => {
@@ -26,9 +25,9 @@ function RegisterInput({ onRegister, currentPage }) {
   return (
     <>
       <div>
-        <input className="auth-input" type="text" placeholder="Name" value={name} onChange={onChangeNameHandler} />
-        <input className="auth-input" type="email" placeholder="Email" value={email} onChange={onChangeEmailHandler} />
-        <input className="auth-input" type="password" placeholder="Password" value={password} onChange={onChangePasswordHandler} />
+        <input id="signUpName" className="auth-input" type="text" placeholder="Name" value={name} onChange={onChangeNameHandler} />
+        <input id="signUpEmail" className="auth-input" type="email" placeholder="Email" value={email} onChange={onChangeEmailHandler} />
+        <input id="signUpPassword" className="auth-input" type="password" placeholder="Password" value={password} onChange={onChangePasswordHandler} />
       </div>
       <button className="btn-auth" type="button" onClick={onRegisterHandler}>Sign Up</button>
     </>
